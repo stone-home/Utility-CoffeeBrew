@@ -21,6 +21,7 @@ class Preparation(BaseData):
                 return tool
         return None
 
+
 class Preparations:
     def __init__(self, data: List[Dict]):
         self._preparations: Dict[str, Preparation] = {}

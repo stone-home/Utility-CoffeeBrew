@@ -5,6 +5,7 @@ from .base import BaseData
 class Mill(BaseData):
     pass
 
+
 class Mills:
     def __init__(self, data: List[Dict]):
         self._mills: Dict[str, Mill] = {}
@@ -24,6 +25,3 @@ class Mills:
             if mill.name == name:
                 return mill
         return None
-
-
-

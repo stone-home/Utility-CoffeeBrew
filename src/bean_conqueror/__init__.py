@@ -5,10 +5,10 @@ from .brew import Brew
 from .parser import BeanConquerorParser
 
 __all__ = [
-    'BeanConquerorParser',
-    'Mill',
-    'Bean',
-    'BeanVariety',
-    'Preparation',
-    'Brew',
+    "BeanConquerorParser",
+    "Mill",
+    "Bean",
+    "BeanVariety",
+    "Preparation",
+    "Brew",
 ]

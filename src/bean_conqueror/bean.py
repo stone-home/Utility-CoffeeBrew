@@ -64,7 +64,9 @@ class Bean(BaseData):
 
     @property
     def varieties(self) -> List[BeanVariety]:
-        return [BeanVariety(variety) for variety in self.data.get("bean_information", [])]
+        return [
+            BeanVariety(variety) for variety in self.data.get("bean_information", [])
+        ]
 
     @property
     def price(self):
@@ -100,7 +102,7 @@ class Beans:
                     "aromatics": bean.aromatics,
                     "varieties": [],
                     "process": [],
-                    "history": []
+                    "history": [],
                 }
                 _variety = []
                 _process = []

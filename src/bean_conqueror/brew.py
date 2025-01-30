@@ -46,11 +46,11 @@ class Brew(BaseData):
 
     @property
     def brew_quantity(self) -> float:
-        return float(self.data.get('brew_beverage_quantity'))
+        return float(self.data.get("brew_beverage_quantity"))
 
     @property
     def brew_unit(self) -> str:
-        return self.data.get('brew_beverage_quantity_type').lower()
+        return self.data.get("brew_beverage_quantity_type").lower()
 
 
 class Brews:
