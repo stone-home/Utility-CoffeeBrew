@@ -1,4 +1,4 @@
-# !/usr/bin/env python3
+#!/usr/bin/env python3
 import argparse
 from src.bean2obsidian import Bean2Obsidian
 
