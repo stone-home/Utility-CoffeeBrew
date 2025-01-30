@@ -1,6 +1,6 @@
 branches:
   - trunk
-repositoryUrl: "https://github.com/stone-home/Template-Easy-Setup-DevOps"
+repositoryUrl: "https://github.com/stone-home/Utility-CoffeeBrew"
 plugins:
   - "@semantic-release/commit-analyzer"
   - "@semantic-release/release-notes-generator"
