@@ -12,9 +12,20 @@ class BaseData:
     def __repr__(self):
         return f"Name: {self.name}, UUID: {self.uuid}"
 
+    def _get_nested(self, *keys: str, default=None):
+        """Safely get nested dictionary values."""
+        current = self.data
+        for key in keys:
+            if not isinstance(current, dict):
+                return default
+            current = current.get(key, default)
+            if current is None:
+                return default
+        return current
+
     @property
     def uuid(self) -> str:
-        return self.data.get("config").get("uuid")
+        return self._get_nested("config", "uuid", default="")
 
     @property
     def name(self) -> str:
@@ -22,7 +33,7 @@ class BaseData:
 
     @property
     def timestamp(self) -> str:
-        timestamp = int(self.data.get("config").get("unix_timestamp"))
+        timestamp = self._get_nested("config", "unix_timestamp")
         datetime_object = datetime.datetime.fromtimestamp(timestamp)
         return datetime_object.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
 

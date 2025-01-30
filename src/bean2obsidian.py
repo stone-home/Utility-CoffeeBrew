@@ -1,8 +1,7 @@
-from copy import deepcopy
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Union, Dict, List
 from ures.markdown import Zettelkasten
-from .bean_conqueror import BeanConquerorParser, Bean, BeanVariety, Mill, Brew
+from .bean_conqueror import BeanConquerorParser, Bean
 
 
 class Bean2Obsidian:
@@ -21,7 +20,7 @@ class Bean2Obsidian:
         self.coffee_folder = self.obsidian_folder.joinpath(
             "002-literature", "004-coffee"
         )
-        self.tag_prefix = "life/☕coffee"
+        self.tag_prefix = "☕coffee"
 
     def _insert_attachment(self, note: Zettelkasten, attachment: list):
         """Insert attachment to the note if it exists
@@ -40,7 +39,7 @@ class Bean2Obsidian:
         img = Image.open(image_path).convert("RGB")
         img.save(output_path, "webp", lossless=False, quality=40)
 
-    def mills(self):
+    def mills(self) -> List[Dict[str, Union[Zettelkasten, Path]]]:
         mill_notes = []
         mill_path = self.coffee_folder.joinpath("001-equipment", "001-grinder")
         if mill_path.is_dir() is False:
@@ -60,7 +59,7 @@ class Bean2Obsidian:
             mill_notes.append({"note": mill_note, "path": note_path})
         return mill_notes
 
-    def beans(self):
+    def beans(self) -> List[Dict[str, Union[Zettelkasten, Path]]]:
         bean_notes = []
         bean_path = self.coffee_folder.joinpath("002-beans")
         for name, bean in self.bean_data.beans.beans.items():
@@ -130,7 +129,7 @@ class Bean2Obsidian:
                 bean_notes.append({"note": history_note, "path": note_path})
         return bean_notes
 
-    def preparations(self):
+    def preparations(self) -> List[Dict[str, Union[Zettelkasten, Path]]]:
         notes = []
         method_path = self.coffee_folder.joinpath("001-equipment", "002-method")
         for prepare in self.bean_data.preparations.preparations:
@@ -171,7 +170,7 @@ class Bean2Obsidian:
                 )
         return notes
 
-    def brews(self):
+    def brews(self) -> List[Dict[str, Union[Zettelkasten, Path]]]:
         notes = []
         brew_path = self.coffee_folder.joinpath("003-brews")
         for brew in self.bean_data.brews.brews:

@@ -69,7 +69,7 @@ class Bean(BaseData):
         ]
 
     @property
-    def price(self):
+    def price(self) -> float:
         return self.data.get("cost")
 
     @property

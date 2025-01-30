@@ -9,7 +9,7 @@ class Tool(BaseData):
 class Preparation(BaseData):
     @property
     def style_type(self) -> str:
-        return self.data.get("style_type")
+        return str(self.data.get("style_type")).lower()
 
     @property
     def tools(self) -> List[Tool]:
